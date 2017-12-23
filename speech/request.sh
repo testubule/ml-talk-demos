@@ -44,7 +44,7 @@ fi
 read -p "Press enter when you're ready to record" rec
 if [ -z $rec ]; then
   rec --channels=1 --bits=16 --rate=16000 audio.flac trim 0 5
-  echo \"`base64 audio.flac`\" > audio.base64
+  echo \"`base64 audio.flac -w 0 `\" > audio.base64
   sed -i '' -e '/"content":/r audio.base64' $FILENAME
 fi
 echo Request "file" $FILENAME created:
